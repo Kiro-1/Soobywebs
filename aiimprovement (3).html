@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOOBY BOT</title>
+<style>
+    /* Styles for chat container */
+    #chat-container {
+        width: 300px;
+        height: 400px;
+        border: 1px solid #ccc;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+<h1>SOOBY BOT</h1>
+<h4>YOUR AI ASSISTANT</h4>
+
+
+<h1>click here  to see ai command</h1>
+  <a href="command.html">command.html</a>
+  
+  </html></a>
+
+<div id="chat-container"></div>
+
+<input type="text" id="user-input" placeholder="Type your message...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+    // Predefined responses with variability
+    var responses = {
+        "helo": ["Hello!", "Hi there!", "Hey! How can I help you?"],
+        "kumusta": ["I'm doing well, thank you!", "I'm great, thanks for asking!", "I'm good, how about you?"],
+        "ai": ["Sure, I'm here to assist you!", "Of course! What do you need help with?", "I'm ready to help!"],
+        "thank you": ["You're welcome!", "No problem!", "Anytime!"],
+        "pre": ["pogi!", "pogi si kiro !", "pogi "],
+        "what's your name": ["I'm SOOBY, your AI assistant!", "My name is SOOBY!", "Call me SOOBY!"],
+        "sino gumawa sayo?": ["I was created by a gsmm company ceo kiro o.", "si kiro po.", "I don't have a specific creator."],
+        "tell me a joke": ["Why don't scientists trust atoms? Because they make up everything!", "What did one ocean say to the other ocean? Nothing, they just waved!", "Why don't skeletons fight each other? They don't have the guts!"],
+        "boring": ["Let's play a game! How about 20 Questions?", "How about we tell each other a story?", "Let's learn something new! Do you want to know a fun fact?"],
+        "what's the weather like": ["I'm not sure, but you can check a weather website or app for accurate information.", "I don't have access to real-time weather data.", "I'm afraid I can't help with that."],
+        "tell me a fun fact": ["Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible!", "The shortest war in history was between Britain and Zanzibar on August 27, 1896. It lasted only 38 minutes!", "A group of flamingos is called a 'flamboyance'!"],
+        "do you like music": ["I don't have personal preferences, but I can appreciate music!", "Music can be enjoyable for humans, but I'm just a program.", "I can't listen to music, but I can help you find songs or artists you might like!"],
+        "what's your favorite color": ["I don't have the ability to see or perceive colors, so I don't have a favorite color!", "As an AI, I don't experience colors the way humans do.", "Colors are a human concept. I'm more focused on processing information and assisting you!"],
+        "what do you do for fun": ["I enjoy processing data and helping users like you!", "I don't have personal interests or hobbies, but I'm here to assist you with anything you need!", "Interacting with users like you is what I do for fun!"],
+        "tell me a riddle": ["What has keys but can't open locks? A piano!", "What has a head, a tail, is brown, and has no legs? A penny!", "The more you take, the more you leave behind. What am I? Footsteps!"],
+        "are you a robot": ["I'm an artificial intelligence program designed to assist users like you!", "I'm not a robot in the traditional sense. I'm a software program created to interact with users and provide assistance.", "I don't have a physical form, so I'm not a robot. But I'm here to help you!"],
+        "what's the meaning of life": ["The meaning of life is a philosophical question that varies from person to person. Some believe it's about finding happiness, others think it's about fulfilling a purpose.", "The meaning of life is a complex and subjective topic. It's up to each individual to find their own meaning and purpose.", "The meaning of life is a mystery that humans have been pondering for centuries. It's a deeply personal question with no definitive answer."],
+        "joke": ["HAHA naka copslock", "pag ba nalunod yung isda tapos naging tao tapos kumain naging kalsada?!", "Why don't skeletons fight each other? They don't have the guts!", "Why couldn’t the bicycle stand up by itself? It was two tired!"]
+        // Add more responses as needed
+    };
+
+    // Function to send user message and get AI response
+    function sendMessage() {
+        var userInput = document.getElementById('user-input').value;
+        if (userInput.trim() !== '') {
+            displayMessage('User', userInput);
+            var aiResponse = getAIResponse(userInput);
+            displayMessage('SOOBY', aiResponse);
+            document.getElementById('user-input').value = '';
+        }
+    }
+
+    // Function to display message in the chat container
+    function displayMessage(sender, message) {
+        var chatContainer = document.getElementById('chat-container');
+        var messageElement = document.createElement('div');
+        messageElement.textContent = sender + ': ' + message;
+        chatContainer.appendChild(messageElement);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Function to get AI response based on user input
+    function getAIResponse(userInput) {
+        // Convert user input to lowercase for case-insensitive matching
+        var lowerCaseInput = userInput.toLowerCase();
+
+        // Check if there's a predefined response for the user input
+        if (responses.hasOwnProperty(lowerCaseInput)) {
+            // Randomly select a response from the array of responses
+            var randomIndex = Math.floor(Math.random() * responses[lowerCaseInput].length);
+            return responses[lowerCaseInput][randomIndex];
+        } else {
+            // Default response for unrecognized input
+            return "I'm still learning. Could you rephrase that?","may matutulong poba? ako!";
+        }
+    }
+</script>
+</body>
+</html>
